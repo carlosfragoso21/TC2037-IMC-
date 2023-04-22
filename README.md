@@ -3,7 +3,8 @@
 Documentación Actividad 3.2 Programando un DFA
 Importante: por el momento no he terminado el archivo racket, lo subiré el 23/04/2023 sin falta.
 
-Diseño: ![diagrama automata](./diseño automata.png)  
+Diseño: 
+![diagrama automata](./diseño automata.png)  
 
 <!--Sección 1
 Aquí podrías dividir el contenido del documento en secciones, y describir cada una de ellas de manera breve.
