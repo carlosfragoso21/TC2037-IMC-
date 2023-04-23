@@ -42,23 +42,20 @@ The types of tokens that can be found are:
 'spa': for white spaces.
 
 ## Output example
-For the input "3.14 + 2 * (4 - 2)", the program would produce the following output:
-$ echo "Value   |   Token"
-3.14    |   float
-+       |   op
-2       |   int
-*       |   op
-(       |   open
-4       |   int
--       |   op
-2       |   int
-)       |   close_par
+For the input "3.14 + 2 * (4 - 2)", the program would produce an output like this:
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+"Value     Token"
+3.14       float
++          op
+2          int
+*          op
+(          open
+4          int
+-          op
+2          int
+)          close_par
+
+'done
 
 ## Credits
 This code is based on 02_token_list.rkt by gilecheverria. We thank the gilecheverria team for providing such a useful file.
