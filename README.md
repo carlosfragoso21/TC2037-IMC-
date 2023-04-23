@@ -43,7 +43,7 @@ The types of tokens that can be found are:
 
 ## Output example
 For the input "3.14 + 2 * (4 - 2)", the program would produce the following output:
-` Value   |   Token
+`Value   |   Token
 3.14    |   float
 +       |   op
 2       |   int
@@ -52,7 +52,7 @@ For the input "3.14 + 2 * (4 - 2)", the program would produce the following outp
 4       |   int
 -       |   op
 2       |   int
-)       |   close_par `
+)       |   close_par`
 
 ## Credits
 This code is based on 02_token_list.rkt by gilecheverria. We thank the gilecheverria team for providing such a useful file.
