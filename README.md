@@ -44,16 +44,8 @@ The types of tokens that can be found are:
 ## Output example
 For the input "3.14 + 2 * (4 - 2)", the program would produce an output like this:
 
-"Value     Token"
-3.14       float
-+          op
-2          int
-*          op
-(          open
-4          int
--          op
-2          int
-)          close_par
+![image](https://user-images.githubusercontent.com/80837879/233825802-5ff2ea1e-e49d-4b51-90ae-8f12a043a036.png)
+
 
 'done
 
