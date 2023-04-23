@@ -171,8 +171,8 @@ Carlos Fragoso - A01028113
        [(char-alphabetic? char) (values 'id #f)]
        [(eq? char #\_) (values 'id #f)]
        [(char-whitespace? char) (values 'op_spa #f)]
-       [(eq? char #\() (values 'open 'op_spa)]
-       [(eq? char #\)) (values 'close 'op_spa)]
+       [(eq? char #\() (values 'open '#f)]
+       [(eq? char #\)) (values 'close '#f)]
        [else (values 'inv #f)])]
     [(eq? state 'open) (cond
        [(char-numeric? char) (values 'int 'open)]
