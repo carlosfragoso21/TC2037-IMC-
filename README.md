@@ -2,19 +2,19 @@
 # Implementacion de metodos computacionales
 Documentación Actividad 3.2 Programando un DFA
 
-##Introduction
+## Introduction
 Aquí podrías dividir el contenido del documento en secciones, y describir cada una de ellas de manera breve.
 
-##DFA design
+## DFA design
 ![diagrama automata](./diseño_act.png)  
 
-##user manual
+## user manual
 The code is an implementation of a lexer, a program that reads a string of characters and recognizes the different types of tokens in the input.
 
-##Requirements
+## Requirements
 Before running this program, you will need to have Racket installed on your computer. You can download it from the following link: https://download.racket-lang.org/
 
-##How to use the program
+## How to use the program
 1.-Open Racket on your computer.
 
 2.-Open the file that contains the source code in Racket.
@@ -41,7 +41,7 @@ The types of tokens that can be found are:
 'comment': for comments.
 'spa': for white spaces.
 
-##Output example
+## Output example
 For the input "3.14 + 2 * (4 - 2)", the program would produce the following output:
 Value   |   Token
 3.14    |   float
@@ -54,5 +54,5 @@ Value   |   Token
 2       |   int
 )       |   close_par
 
-##Credits
+## Credits
 This code is based on 02_token_list.rkt by gilecheverria. We thank the gilecheverria team for providing such a useful file.
