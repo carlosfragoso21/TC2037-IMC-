@@ -19,7 +19,7 @@ Carlos Fragoso - A01028113
 
 (define (arithmetic-lexer strng)
   " Evaluate an arithmetic expression "
-  (validate-dfa strng (dfa delta-arithmetic 'start '(int float exp id close_par comment))))
+  (validate-dfa strng (dfa delta-arithmetic 'start '(int float exp id close comment))))
 
 (define (printresults lst)
   (cond ((null? lst)
@@ -111,6 +111,8 @@ Carlos Fragoso - A01028113
        [(or (eq? char #\e) (eq? char #\E)) (values 'e #f)]
        [(char-operator? char) (values 'op 'int)]
        [(char-whitespace? char) (values 'spa 'int)]
+       [(eq? char #\() (values 'open 'int)]
+       [(eq? char #\)) (values 'close 'int)]
        [else (values 'inv #f)])]
     [(eq? state 'dot) (cond
        [(char-numeric? char) (values 'float #f)]
@@ -121,6 +123,8 @@ Carlos Fragoso - A01028113
        [(or (eq? char #\e) (eq? char #\E)) (values 'e #f)]
        [(char-operator? char) (values 'op 'float)]
        [(char-whitespace? char) (values 'spa 'float)]
+       [(eq? char #\() (values 'open 'float)]
+       [(eq? char #\)) (values 'close 'float)]
        [else (values 'inv #f)])]
     [(eq? state 'e) (cond
        [(char-numeric? char) (values 'exp #f)]
@@ -133,6 +137,8 @@ Carlos Fragoso - A01028113
        [(char-numeric? char) (values 'exp #f)]
        [(char-operator? char) (values 'op 'exp)]
        [(char-whitespace? char) (values 'spa 'exp)]
+       [(eq? char #\() (values 'open 'exp)]
+       [(eq? char #\)) (values 'close 'exp)]
        [else (values 'inv #f)])]
     [(eq? state 'id) (cond
        [(char-numeric? char) (values 'id #f)]
@@ -141,17 +147,23 @@ Carlos Fragoso - A01028113
        [(eq? char #\_) (values 'id #f)]
        [(char-operator? char) (values 'op 'id)]
        [(char-whitespace? char) (values 'spa 'id)]
+       [(eq? char #\() (values 'open 'id)]
+       [(eq? char #\)) (values 'close 'id)]
        [else (values 'inv #f)])]
     [(eq? state 'op) (cond
        [(char-numeric? char) (values 'int 'op)]
        [(or (eq? char #\+) (eq? char #\-)) (values 'sign 'op)]
        [(char-alphabetic? char) (values 'id 'op)]
        [(char-whitespace? char) (values 'op_spa 'op)]
+       [(eq? char #\() (values 'open 'op)]
+       [(eq? char #\)) (values 'close 'op)]
        [else (values 'inv #f)])]
     [(eq? state 'spa) (cond
        [(eq? char #\/) (values 'comment #f)]
        [(char-operator? char) (values 'op #f)]
        [(char-whitespace? char) (values 'spa #f)]
+       [(eq? char #\() (values 'open 'spa)]
+       [(eq? char #\)) (values 'close 'spa)]
        [else (values 'inv #f)])]
     [(eq? state 'op_spa) (cond
        [(char-numeric? char) (values 'int #f)]
@@ -159,14 +171,18 @@ Carlos Fragoso - A01028113
        [(char-alphabetic? char) (values 'id #f)]
        [(eq? char #\_) (values 'id #f)]
        [(char-whitespace? char) (values 'op_spa #f)]
+       [(eq? char #\() (values 'open 'op_spa)]
+       [(eq? char #\)) (values 'close 'op_spa)]
        [else (values 'inv #f)])]
     [(eq? state 'open) (cond
-       [(char-numeric? char) (values 'int #f)]
-       [(eq? char #\)) (values 'close #f)]
-       [(char-whitespace? char) (values 'spa 'int)]
+       [(char-numeric? char) (values 'int 'open)]
+       [(eq? char #\)) (values 'close 'open)]
+       [(char-whitespace? char) (values 'spa 'open)]
+       [(char-alphabetic? char) (values 'id 'open)]
        [else (values 'inv #f)])]
     [(eq? state 'close) (cond
-       [(char-numeric? char) (values 'int #f)]
-       [(char-whitespace? char) (values 'spa 'int)]
+       [(char-numeric? char) (values 'int 'close)]
+       [(char-whitespace? char) (values 'spa 'close)]
+       [(char-alphabetic? char) (values 'id 'close)]
        [else (values 'inv #f)])]
     ))
